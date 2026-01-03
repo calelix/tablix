@@ -1,12 +1,15 @@
 import type { Metadata } from "next"
 
-import { ThemeProvider } from "@/app/providers"
+import "@/app/styles/globals.css"
 import {
   inter,
   geistSans,
   geistMono,
 } from "@/app/fonts"
-import "@/app/styles/globals.css"
+import {
+  ThemeProvider,
+  QueryProvider,
+} from "@/app/providers"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,7 +25,9 @@ export default function RootLayout({
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider>
-          {children}
+          <QueryProvider>
+            {children}
+          </QueryProvider>
         </ThemeProvider>
       </body>
     </html>
